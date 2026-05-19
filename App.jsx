@@ -87,16 +87,16 @@ const dailyPhrases = [
 ];
 
 const secretQuizQuestions = [
-  { question: "What does “Kocham cię” mean?", answer: "I love you", options: ["I love you", "Good night", "Coffee"] },
-  { question: "What does “Tęsknię za tobą” mean?", answer: "I miss you", options: ["I miss you", "Thank you", "Goodbye"] },
-  { question: "Which Polish word means coffee?", answer: "Kawa", options: ["Kawa", "Dobrze", "Buziaki"] },
-  { question: "What does “Dobranoc” mean?", answer: "Good night", options: ["Good morning", "Good night", "Sorry"] },
-  { question: "Which phrase means “You are beautiful”?", answer: "Jesteś piękna", options: ["Jesteś piękna", "Nie rozumiem", "Do widzenia"] },
-  { question: "What does “Dziękuję” mean?", answer: "Thank you", options: ["Please", "Thank you", "One more time"] },
-  { question: "Which phrase means “I don’t understand”?", answer: "Nie rozumiem", options: ["Nie rozumiem", "Jak się masz?", "Na zdrowie"] },
-  { question: "What does “Buziaki” mean?", answer: "Kisses", options: ["Kisses", "Coffee", "Good day"] },
-  { question: "Which phrase means “Have a good day”?", answer: "Dobrego dnia", options: ["Dobrego dnia", "Śpij dobrze", "Co robisz?"] },
-  { question: "What does “Myślę o tobie” mean?", answer: "I’m thinking about you", options: ["I’m thinking about you", "I want coffee", "Goodbye"] },
+  { question: "Which Polish phrase means “I love you”?", answer: "Kocham cię", options: ["Kocham cię", "Dobranoc", "Kawa"] },
+  { question: "Which Polish phrase means “I miss you”?", answer: "Tęsknię za tobą", options: ["Tęsknię za tobą", "Dziękuję", "Do widzenia"] },
+  { question: "Which Polish word means “coffee”?", answer: "Kawa", options: ["Kawa", "Dobrze", "Buziaki"] },
+  { question: "Which Polish phrase means “Good night”?", answer: "Dobranoc", options: ["Dzień dobry", "Dobranoc", "Przepraszam"] },
+  { question: "Which Polish phrase means “You are beautiful”?", answer: "Jesteś piękna", options: ["Jesteś piękna", "Nie rozumiem", "Do widzenia"] },
+  { question: "Which Polish phrase means “Thank you”?", answer: "Dziękuję", options: ["Proszę", "Dziękuję", "Jeszcze raz"] },
+  { question: "Which Polish phrase means “I don’t understand”?", answer: "Nie rozumiem", options: ["Nie rozumiem", "Jak się masz?", "Na zdrowie"] },
+  { question: "Which Polish word means “Kisses”?", answer: "Buziaki", options: ["Buziaki", "Kawa", "Dobrze"] },
+  { question: "Which Polish phrase means “Have a good day”?", answer: "Dobrego dnia", options: ["Dobrego dnia", "Śpij dobrze", "Co robisz?"] },
+  { question: "Which Polish phrase means “I’m thinking about you”?", answer: "Myślę o tobie", options: ["Myślę o tobie", "Chcę kawę", "Do widzenia"] },
 ];
 
 const quizQuestions = [
