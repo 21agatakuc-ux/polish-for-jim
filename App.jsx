@@ -430,7 +430,7 @@ export default function App() {
 
       <section className="message">
         <h2>A message from me</h2>
-        <p>Every Polish word you learn brings you a little closer to me. And yes, “kawa” is still very important.</p>
+        <p>Every Polish word you learn brings you a little closer to me. And yes, “Kocham Cię” is still very important.</p>
       </section>
 
       <section className="quiz section">
