@@ -139,14 +139,26 @@ const quizQuestions = [
 
 function speak(text, slow = false) {
   if (!window.speechSynthesis) return;
+
   window.speechSynthesis.cancel();
+
   const utterance = new SpeechSynthesisUtterance(text);
+
   utterance.lang = "pl-PL";
-  utterance.rate = slow ? 0.55 : 0.9;
-  utterance.pitch = 1;
+
   const voices = window.speechSynthesis.getVoices();
-  const polishVoice = voices.find((voice) => voice.lang?.toLowerCase().startsWith("pl"));
-  if (polishVoice) utterance.voice = polishVoice;
+  const polishVoice = voices.find(
+    (voice) => voice.lang?.toLowerCase().startsWith("pl")
+  );
+
+  if (polishVoice) {
+    utterance.voice = polishVoice;
+  }
+
+  utterance.rate = slow ? 0.35 : 0.9;
+  utterance.pitch = 0.95;
+  utterance.volume = 1;
+
   window.speechSynthesis.speak(utterance);
 }
 
