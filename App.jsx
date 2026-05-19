@@ -142,22 +142,25 @@ function speak(text, slow = false) {
 
   window.speechSynthesis.cancel();
 
-  const utterance = new SpeechSynthesisUtterance(text);
+  const utterance = new SpeechSynthesisUtterance(
+    slow
+      ? text.split(" ").join(" ... ")
+      : text
+  );
 
   utterance.lang = "pl-PL";
 
   const voices = window.speechSynthesis.getVoices();
   const polishVoice = voices.find(
-    (voice) => voice.lang?.toLowerCase().startsWith("pl")
+    voice => voice.lang?.toLowerCase().startsWith("pl")
   );
 
   if (polishVoice) {
     utterance.voice = polishVoice;
   }
 
-  utterance.rate = slow ? 0.35 : 0.9;
+  utterance.rate = slow ? 0.15 : 0.9;
   utterance.pitch = 0.95;
-  utterance.volume = 1;
 
   window.speechSynthesis.speak(utterance);
 }
