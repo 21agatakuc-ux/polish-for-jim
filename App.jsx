@@ -100,11 +100,11 @@ const secretQuizQuestions = [
 ];
 
 const quizQuestions = [
-  { question: "Which phrase means ‘I miss you’?", answer: "Tęsknię za tobą", options: ["Dzień dobry", "Tęsknię za tobą", "Kawa"] },
-  { question: "Which phrase means ‘Good night’?", answer: "Dobranoc", options: ["Dobranoc", "Do widzenia", "Dobrze"] },
-  { question: "Which phrase means ‘Thank you’?", answer: "Dziękuję", options: ["Proszę", "Przepraszam", "Dziękuję"] },
-  { question: "Which phrase means ‘You are beautiful’?", answer: "Jesteś piękna", options: ["Jesteś piękna", "Nie rozumiem", "Co robisz?"] },
-  { question: "Which phrase means ‘Coffee, please’?", answer: "Poproszę kawę", options: ["Chcę kawę", "Poproszę kawę", "Na zdrowie"] },
+  { question: "Which Polish phrase means “I miss you”?", answer: "Tęsknię za tobą", options: ["Dzień dobry", "Tęsknię za tobą", "Kawa"] },
+  { question: "Which Polish phrase means “Good night”?", answer: "Dobranoc", options: ["Dobranoc", "Do widzenia", "Dobrze"] },
+  { question: "Which Polish phrase means “Thank you”?", answer: "Dziękuję", options: ["Proszę", "Przepraszam", "Dziękuję"] },
+  { question: "Which Polish phrase means “You are beautiful”?", answer: "Jesteś piękna", options: ["Jesteś piękna", "Nie rozumiem", "Co robisz?"] },
+  { question: "Which Polish phrase means “Coffee, please”?", answer: "Poproszę kawę", options: ["Chcę kawę", "Poproszę kawę", "Na zdrowie"] },
 ];
 
 function speak(text, slow = false) {
