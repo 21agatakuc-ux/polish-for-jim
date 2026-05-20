@@ -443,10 +443,10 @@ export default function App() {
         </div>
       </section>
 
-      <section className="message">
-        <h2>A message from me</h2>
-        <p>Every Polish word you learn brings you a little closer to me. And yes, “Kocham Cię” is still very important.</p>
-      </section>
+     <section className="message">
+  <h2>A message from me</h2>
+  <p>Every Polish word you learn brings you a little closer to me. And yes, “Kocham Cię” is still very important.</p>
+</section>
 
       <section className="quiz section">
         <div className="quiz-box">
