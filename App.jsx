@@ -18,6 +18,21 @@ const photos = [
   "/images/photo13.jpg",
 ];
 
+function Photo({ src, alt = "Photo", className = "", fallbackText = "Polish for Jim" }) {
+  const [error, setError] = useState(false);
+
+  if (error || !src) {
+    return (
+      <div className={`photo-fallback ${className}`}>
+        <Camera size={28} />
+        <span>{fallbackText}</span>
+      </div>
+    );
+  }
+
+  return <img src={src} alt={alt} className={className} onError={() => setError(true)} />;
+}
+
 const lessons = [
   {
     title: "Words Jim already knows",
@@ -206,7 +221,7 @@ function Flashcards() {
       </div>
 
       <div className="flashcard-layout">
-        <img className="flash-photo" src={photos[6 + (index % 6)]} alt="Flashcard memory" />
+        <Photo className="flash-photo" src={photos[6 + (index % 7)]} alt="Flashcard memory" fallbackText="Flashcards" />
         <div className={flipped ? "flashcard flipped" : "flashcard"} onClick={() => setFlipped(!flipped)}>
           <p className="flash-hint">Tap to flip</p>
           {!flipped ? (
@@ -369,7 +384,7 @@ export default function App() {
       </section>
 
       <section className="daily-card">
-        <img className="daily-photo" src={photos[5]} alt="Daily Polish moment" />
+        <Photo className="daily-photo" src={photos[5]} alt="Daily Polish moment" fallbackText="Phrase of the day" />
         <div>
           <p className="daily-label">Phrase of the day</p>
           <h2>{phraseOfTheDay.pl}</h2>
@@ -403,7 +418,7 @@ export default function App() {
 
         <div className="lesson-grid">
           <motion.div key={lesson.title} initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} className="photo-card">
-            <img src={lesson.photo} alt="lesson" />
+            <Photo src={lesson.photo} alt={lesson.title} fallbackText={lesson.title} />
             <div>
               <h2>{lesson.title}</h2>
               <p>{lesson.subtitle}</p>
@@ -426,13 +441,13 @@ export default function App() {
         </div>
         <div className="gallery-grid">
           {photos.map((photo, index) => (
-            <img key={photo} src={photo} alt={`Memory ${index + 1}`} />
+            <Photo key={photo} src={photo} alt={`Memory ${index + 1}`} fallbackText={`Memory ${index + 1}`} />
           ))}
         </div>
       </section>
 
       <section className="message">
-       <img className="message-photo" src={photos[12]} />
+        <Photo className="message-photo" src={photos[12]} alt="A memory" fallbackText="A message from me" />
         <h2>A message from me</h2>
         <p>Every Polish word you learn brings you a little closer to me. And yes, “kawa” is still very important.</p>
       </section>
@@ -469,7 +484,7 @@ export default function App() {
             </>
           ) : (
             <div className="surprise-card">
-              <img src="/images/us.jpg" alt="Our photo" />
+              <Photo src="/images/us.jpg" alt="Our photo" fallbackText="Surprise unlocked" />
               <div>
                 <p className="secret-label"><Heart size={17} /> Surprise unlocked</p>
                 <h2>You did it, Jim ❤️</h2>
@@ -501,6 +516,7 @@ h1 { margin: 18px 0 16px; font-size: clamp(54px, 9vw, 110px); line-height: .9; l
 .hero-btn:hover, .ghost-btn:hover, .btn:hover, .tab:hover, .quiz-options button:hover { transform: translateY(-2px); }
 .daily-card { width: min(1100px, 92vw); margin: -42px auto 18px; position: relative; z-index: 3; display: grid; grid-template-columns: 180px 1fr auto; gap: 18px; align-items: center; padding: 24px; border-radius: 32px; background: linear-gradient(135deg, rgba(103,232,249,.22), rgba(251,146,60,.2)); border: 1px solid rgba(255,255,255,.16); backdrop-filter: blur(18px); box-shadow: 0 25px 70px rgba(0,0,0,.25); }
 .daily-photo { width: 180px; height: 130px; object-fit: cover; border-radius: 22px; border: 1px solid rgba(255,255,255,.16); }
+.photo-fallback { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; background: linear-gradient(135deg, rgba(103,232,249,.22), rgba(244,114,182,.18), rgba(251,146,60,.16)); color: white; font-weight: 900; text-align: center; }
 .daily-label { margin: 0 0 8px; color: #a5f3fc; text-transform: uppercase; letter-spacing: .22em; font-size: 12px; font-weight: 900; }
 .daily-card h2 { margin: 0; font-size: clamp(30px, 5vw, 48px); }
 .daily-card p { color: #e2e8f0; margin: 8px 0 0; }
@@ -521,7 +537,7 @@ h1 { margin: 18px 0 16px; font-size: clamp(54px, 9vw, 110px); line-height: .9; l
 .tab.active { background: #67e8f9; color: #07111f; }
 .lesson-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 28px; align-items: start; }
 .photo-card, .phrase-card, .quiz-box, .message { border: 1px solid rgba(255,255,255,.13); background: rgba(255,255,255,.1); border-radius: 34px; overflow: hidden; box-shadow: 0 25px 70px rgba(0,0,0,.24); backdrop-filter: blur(16px); }
-.photo-card img { width: 100%; height: 380px; object-fit: cover; display: block; }
+.photo-card img, .photo-card .photo-fallback { width: 100%; height: 380px; object-fit: cover; display: block; }
 .photo-card div { padding: 24px; }
 .photo-card h2 { font-size: 34px; margin: 0 0 8px; }
 .photo-card p { color: #cbd5e1; margin: 0; }
@@ -541,7 +557,7 @@ h1 { margin: 18px 0 16px; font-size: clamp(54px, 9vw, 110px); line-height: .9; l
 .learned { width: 100%; margin-top: 10px; border: 1px solid rgba(255,255,255,.15); background: rgba(255,255,255,.08); color: white; padding: 12px; border-radius: 16px; cursor: pointer; font-weight: 800; }
 .learned-on { background: rgba(251,113,133,.28); color: #ffe4e6; }
 .message { width: min(1100px, 92vw); margin: 20px auto; padding: 34px; background: linear-gradient(135deg, rgba(103,232,249,.18), rgba(251,146,60,.18)); }
-.message-photo { width: 100%; max-height: 340px; object-fit: cover; border-radius: 26px; margin-bottom: 24px; border: 1px solid rgba(255,255,255,.14); }
+.message-photo { width: 100%; height: 340px; object-fit: cover; border-radius: 26px; margin-bottom: 24px; border: 1px solid rgba(255,255,255,.14); }
 .message h2 { margin: 0 0 10px; font-size: 34px; }
 .message p { font-size: 20px; line-height: 1.7; color: #f8fafc; margin: 0; }
 .quiz-box { padding: 30px; }
@@ -562,7 +578,7 @@ h1 { margin: 18px 0 16px; font-size: clamp(54px, 9vw, 110px); line-height: .9; l
 .flash-actions button:hover { transform: translateY(-2px); background: rgba(255,255,255,.18); }
 .flash-count { text-align: center; color: #cbd5e1; font-weight: 800; }
 .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-.gallery-grid img { width: 100%; height: 240px; object-fit: cover; border-radius: 26px; border: 1px solid rgba(255,255,255,.13); box-shadow: 0 18px 45px rgba(0,0,0,.22); }
+.gallery-grid img, .gallery-grid .photo-fallback { width: 100%; height: 240px; object-fit: cover; border-radius: 26px; border: 1px solid rgba(255,255,255,.13); box-shadow: 0 18px 45px rgba(0,0,0,.22); }
 .secret-box { border: 1px solid rgba(255,255,255,.14); background: linear-gradient(135deg, rgba(244,114,182,.16), rgba(103,232,249,.14)); border-radius: 34px; padding: 30px; box-shadow: 0 25px 70px rgba(0,0,0,.25); backdrop-filter: blur(16px); }
 .secret-label { display: flex; align-items: center; gap: 8px; color: #fbcfe8; text-transform: uppercase; letter-spacing: .22em; font-weight: 900; font-size: 13px; margin: 0 0 12px; }
 .secret-box h2 { font-size: clamp(32px, 5vw, 50px); margin: 0 0 14px; }
@@ -570,7 +586,7 @@ h1 { margin: 18px 0 16px; font-size: clamp(54px, 9vw, 110px); line-height: .9; l
 .secret-box h4 { color: #fed7aa; font-size: 23px; margin: 18px 0 0; }
 .secret-progress { display: inline-flex; padding: 10px 14px; border-radius: 999px; background: rgba(255,255,255,.1); color: #e2e8f0; font-weight: 800; }
 .surprise-card { display: grid; grid-template-columns: .95fr 1.05fr; gap: 26px; align-items: center; }
-.surprise-card img { width: 100%; height: 430px; object-fit: cover; border-radius: 28px; box-shadow: 0 20px 55px rgba(0,0,0,.32); }
+.surprise-card img, .surprise-card .photo-fallback { width: 100%; height: 430px; object-fit: cover; border-radius: 28px; box-shadow: 0 20px 55px rgba(0,0,0,.32); }
 .surprise-card p:not(.secret-label) { color: #f8fafc; font-size: 20px; line-height: 1.7; }
 .surprise-card button { border: 0; border-radius: 18px; padding: 14px 18px; background: white; color: #07111f; font-weight: 900; cursor: pointer; }
 @media (max-width: 850px) { .lesson-grid, .stats, .quiz-options, .surprise-card, .flash-actions, .daily-card { grid-template-columns: 1fr; } .daily-photo { width: 100%; height: 220px; } .gallery-grid { grid-template-columns: repeat(2, 1fr); } h1 { letter-spacing: -2px; } .hero, .splash { padding: 34px 5vw; } .ghost-btn { margin-left: 0; } .daily-card { flex-direction: column; align-items: stretch; margin-top: -34px; } .daily-buttons { justify-content: stretch; } .daily-buttons button { flex: 1; justify-content: center; } }
