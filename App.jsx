@@ -15,6 +15,7 @@ const photos = [
   "/images/photo10.jpg",
   "/images/photo11.jpg",
   "/images/photo12.jpg",
+  "/images/photo13.jpg",
 ];
 
 const lessons = [
@@ -431,7 +432,7 @@ export default function App() {
       </section>
 
       <section className="message">
-        <img className="message-photo" src={photos[11]} alt="A memory" />
+       <img className="message-photo" src={photos[12]} />
         <h2>A message from me</h2>
         <p>Every Polish word you learn brings you a little closer to me. And yes, “kawa” is still very important.</p>
       </section>
